@@ -1,0 +1,21 @@
+﻿@model Department
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Department</h1>
+
+<form asp-action="Edit">
+    <partial name="PartialView/CraetingEditDepartmentPartialView" />
+
+    <input class="btn btn-outline-info" type="submit" value="Save Changes" />
+    <a class="btn btn-dark" asp-action="Index">Back To List</a>
+
+</form>
+@* @section vailditionErrors{
+    <partial name="_ValidationScriptsPartial" />
+} *@
+
+
+
+
