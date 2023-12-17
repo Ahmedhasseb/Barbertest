@@ -15,13 +15,13 @@ namespace DAL.Configuration
         public void Configure(EntityTypeBuilder<Client> builder)
         {
             builder.ToTable("Client");
-            builder.HasKey(c => c.ClientId);
+            builder.HasKey(c => c.Id);
             builder.Property(c=>c.Name)
                 .HasMaxLength(20)
                 .IsRequired() ;
             builder.HasOne(c=>c.HairArtist)
                 .WithMany(c=>c.Clients)
-                .HasForeignKey(c=>c.HairArtistId).IsRequired() ;
+                .HasForeignKey(c=>c.HairArtistId).IsRequired();
         }
     }
 }

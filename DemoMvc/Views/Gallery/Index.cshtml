@@ -25,7 +25,7 @@
                     <div class="card" style="width: 18rem;">
                         <img src="~/File/image/@item.ImageName" class="w-100" />
                         <div class="card-body">
-                            <p class="card-text">@Html.DisplayFor(e=>item.HairArtist.name)</p>
+                            <p><span class="bg-light rounded p-1">HairArtist : </span>@Html.DisplayFor(e=>item.HairArtist.name)</p>
                             <p class="card-text">@item.Decsription</p>
                             <a  class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Details</a>
                         </div>

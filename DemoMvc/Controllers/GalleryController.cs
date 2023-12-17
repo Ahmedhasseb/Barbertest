@@ -21,24 +21,19 @@ namespace DemoMvc.Controllers
             _mapper = mapper;
         }
         // GET: EmployeeController
-        public async Task<IActionResult> Index(string SearchValue)
+        public async Task<IActionResult> Index()
         {
 
-            if (string.IsNullOrEmpty(SearchValue))
-            {
+            
+            
                 var employee = await _unitOfWork.Gallery.GetAll();
 
                 await _unitOfWork.Complete();
 
                 var empmapper = _mapper.Map<IEnumerable<Gallery>, IEnumerable<GalleryViewModel>>(employee);
                 return View(empmapper);
-            }
-            else
-            {
-                var emp = _unitOfWork.employeeRepository.SerachValue(SearchValue);
-                var empmapper = _mapper.Map<IEnumerable<Employee>, IEnumerable<EmployeeViewModel>>(emp);
-                return View(empmapper);
-            }
+            
+           
         }
 
         // GET: EmployeeController/Details/5
@@ -96,7 +91,7 @@ namespace DemoMvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit([FromRoute] int id, GalleryViewModel employeeVM)
         {
-            if (id == employeeVM.Id)
+            if (id != employeeVM.Id)
             {
                 return BadRequest();
             }
@@ -104,6 +99,7 @@ namespace DemoMvc.Controllers
             {
                 try
                 {
+                    employeeVM.ImageName = DocumentSettings.uploadFile(employeeVM.Image, "image");
                     var empmaper = _mapper.Map<GalleryViewModel, Gallery>(employeeVM);
                     _unitOfWork.Gallery.Update(empmaper);
                     await _unitOfWork.Complete();

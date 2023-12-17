@@ -39,7 +39,7 @@ namespace DemoMvc.Controllers
         // GET: ClientController/Details/5
         public async Task<IActionResult> Details(int? id, string view = "Details")
         {
-            ViewBag.depart = _unitOfWork.departmentRepostory.GetAll();
+           
             if (id is null)
             {
                 return BadRequest();
@@ -91,7 +91,7 @@ namespace DemoMvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit([FromRoute] int id, ClientViewModel ClientVM)
         {
-            if (id != ClientVM.ClientId)
+            if (id != ClientVM.Id)
             {
                 return BadRequest();
             }
@@ -99,6 +99,7 @@ namespace DemoMvc.Controllers
             {
                 try
                 {
+                    ClientVM.ImageName = DocumentSettings.uploadFile(ClientVM.Image, "image");
                     var empmaper = _mapper.Map<ClientViewModel, Client>(ClientVM);
                     _unitOfWork.Client.Update(empmaper);
                     await _unitOfWork.Complete();
@@ -124,17 +125,18 @@ namespace DemoMvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id, ClientViewModel ClientVM)
         {
-            if (id != ClientVM.ClientId)
+            if (id != ClientVM.Id)
             {
                 return BadRequest();
             }
             try
             {
+                
                 var empmapper = _mapper.Map<ClientViewModel, Client>(ClientVM);
                 _unitOfWork.Client.Delete(empmapper);
                 await _unitOfWork.Complete();
 
-                DocumentSettings.DeleteFile(empmapper.ImageName, "image");
+                DocumentSettings.DeleteFile(empmapper.ImageName,"image");
 
 
                 return RedirectToAction(nameof(Index));

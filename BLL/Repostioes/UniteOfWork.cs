@@ -13,15 +13,13 @@ namespace BLL.Repostioes
     {
         private readonly Dbcontext _dbcontext;
 
-        public IDepartmentRepostory departmentRepostory { get ; set ; }
-        public IEmployeeRepository employeeRepository { get ; set ; }
+   
         public IClient Client { get; set; }
         public IGallery Gallery { get; set; }
         public IHairArtist HairArtist { get; set; }
         public UniteOfWork(Dbcontext dbcontext)
         {
-            departmentRepostory=new DepartmentRepostory(dbcontext);
-            employeeRepository=new EmployeeRepositorycs(dbcontext);
+           
             Client = new ClientGenericRepository(dbcontext);
             Gallery = new GalleryGenericRepository(dbcontext);
             HairArtist = new HairArtistGenericRepository(dbcontext);

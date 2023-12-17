@@ -5,7 +5,7 @@ namespace DemoMvc.Models
 {
     public class ClientViewModel
     {
-        public int ClientId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public IFormFile Image { get; set; }
         public string ImageName { get; set; }

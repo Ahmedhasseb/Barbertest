@@ -1,5 +1,4 @@
-
-using BLL.Interfaces;
+﻿using BLL.Interfaces;
 using BLL.Repostioes;
 using DAL.ContextConfiguration;
 using DAL.Moduls;
@@ -38,8 +37,8 @@ namespace DemoMvc
 
             //services.AddScoped<IDepartmentRepostory, DepartmentRepostory>();
             //services.AddScoped<IEmployeeRepository, EmployeeRepositorycs>();
-            services.AddScoped<IUnitOfWork,UniteOfWork>();  
-            services.AddAutoMapper(e=>e.AddProfile(new EmployeeProfile()));
+            services.AddScoped<IUnitOfWork, UniteOfWork>();
+           
             services.AddAutoMapper(e => e.AddProfile(new ClientProfile()));
             services.AddAutoMapper(e => e.AddProfile(new GalleryProfile()));
             services.AddAutoMapper(e => e.AddProfile(new HairArtistProfile()));
@@ -69,7 +68,7 @@ namespace DemoMvc
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Gallery}/{action=Index}/{id?}");
             });
         }
     }

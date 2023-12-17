@@ -28,8 +28,7 @@ namespace DAL.ContextConfiguration
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Department> departments { get; set; }
-        public DbSet<Employee> employees { get; set; }
+    
         public DbSet<Client> Clients { get; set; }
         public DbSet<Gallery> Galleries { get; set; }
         public DbSet<HairArtist> HairArtists { get; set; }

@@ -8,8 +8,7 @@ namespace BLL.Interfaces
 {
     public interface IUnitOfWork
     {
-        public IDepartmentRepostory departmentRepostory { get; set; }
-        public IEmployeeRepository employeeRepository { get; set; }
+        
 
         public IClient Client { get; set; } 
         public IGallery Gallery { get; set; }

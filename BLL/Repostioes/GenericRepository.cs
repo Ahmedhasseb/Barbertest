@@ -38,16 +38,17 @@ namespace BLL.Repostioes
 
         public async Task<IEnumerable<T>> GetAll()
         {
-            if (typeof(T)==typeof(Employee))
+            if (typeof(T) == typeof(Gallery))
             {
-             return (IEnumerable<T>)await  _dbcontext.employees.Include(e=>e.Department).ToListAsync();
+                return (IEnumerable<T>)await _dbcontext.Galleries.Include(e => e.HairArtist).ToListAsync();
 
             }
             else
             {
-            return _dbcontext.Set<T>().ToList();
+                return _dbcontext.Set<T>().ToList();
 
             }
+            
         }
 
         public void Update(T item)

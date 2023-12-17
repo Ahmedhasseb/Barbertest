@@ -38,7 +38,7 @@ namespace DemoMvc.Controllers
         // GET: HairArtistController/Details/5
         public async Task<IActionResult> Details(int? id, string view = "Details")
         {
-            ViewBag.depart = _unitOfWork.departmentRepostory.GetAll();
+            
             if (id is null)
             {
                 return BadRequest();

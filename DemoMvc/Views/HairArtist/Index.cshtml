@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HairArtistViewModel>
+﻿@model IEnumerable<HairArtistViewModel>;
 @{
     ViewData["Title"] = "Index";
    
@@ -31,7 +31,7 @@
                 <tr>
 
 
-                    <td>   <img src="~/File/image/@item.ImageName" class="img-fluid rounded-circle w-50" /></td>
+                    <td>   <img src="~/File/image/@item.ImageName" class="img-fluid rounded-circle w-25" /></td>
                    
                     <td>@item.name</td>
 
@@ -48,5 +48,4 @@ else
 {
     <div class="mt-4 alert alert-warning"><h1>No HairArtist ......</h1></div>
 }
-
 

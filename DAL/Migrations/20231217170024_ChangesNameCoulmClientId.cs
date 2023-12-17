@@ -2,13 +2,13 @@
 
 namespace DAL.Migrations
 {
-    public partial class update : Migration
+    public partial class ChangesNameCoulmClientId : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameColumn(
-                name: "GId",
-                table: "Gallery",
+                name: "ClientId",
+                table: "Client",
                 newName: "Id");
         }
 
@@ -16,8 +16,8 @@ namespace DAL.Migrations
         {
             migrationBuilder.RenameColumn(
                 name: "Id",
-                table: "Gallery",
-                newName: "GId");
+                table: "Client",
+                newName: "ClientId");
         }
     }
 }
